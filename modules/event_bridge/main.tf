@@ -27,6 +27,11 @@ resource "aws_sns_topic_policy" "default" {
   policy = data.aws_iam_policy_document.sns_topic_policy.json
 }
 
+resource "aws_sns_topic_subscription" "email-target" {
+  topic_arn = aws_sns_topic.aws_logins.arn
+  protocol  = "email"
+  endpoint  = "rakesh.patil3419@gmail.com"
+}
 
 data "aws_iam_policy_document" "sns_topic_policy" {
   statement {
